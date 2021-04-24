@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49afcac2ed856fb448a62bcca2e86497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCameraAngle: -40
-  maxCameraAngle: -25
+  minCameraAngle: -45
+  maxCameraAngle: 0
   lookAngle: -35
 --- !u!1 &198730059
 GameObject:
