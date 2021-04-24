@@ -8,17 +8,23 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 6.0f;
     [SerializeField] private float rotateSpeed = 3.0f;
+    CharacterController controller;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        controller = GetComponent<CharacterController>();
     }
     void Update()
     {
-        CharacterController controller = GetComponent<CharacterController>();
         // Rotate around the y axis
         transform.Rotate(0, Input.GetAxis("Mouse X") * rotateSpeed, 0);
-        
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.transform.Translate(move * Time.deltaTime * speed);
+
+        //WASD Movement with a character controller
+        Vector3 movement = Vector3.zero;
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        movement += transform.forward * v * speed * Time.deltaTime;
+        movement += transform.right * h * speed * Time.deltaTime;
+        controller.Move(movement);
     }
 }
