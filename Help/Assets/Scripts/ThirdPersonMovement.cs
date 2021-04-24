@@ -11,7 +11,6 @@ public class ThirdPersonMovement : MonoBehaviour
     CharacterController controller;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
     }
     void Update()
