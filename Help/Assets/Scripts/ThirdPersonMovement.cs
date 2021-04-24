@@ -25,6 +25,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         movement += transform.forward * v * speed * Time.deltaTime;
         movement += transform.right * h * speed * Time.deltaTime;
+        movement += Physics.gravity;
         controller.Move(movement);
     }
 }
