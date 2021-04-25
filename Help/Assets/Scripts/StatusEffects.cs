@@ -6,23 +6,30 @@ public class StatusEffects : MonoBehaviour
 {
     [SerializeField] private float energy = 1.0f;
     [SerializeField] private float colorDrain = 0f;
+    [SerializeField] private CharacterController player;
+    [SerializeField] private Vector3 startPosition;
+    [SerializeField] private Quaternion startRotation;
 
     void Start()
     {
         StartCoroutine("SapEnergy");
+        player.transform.SetPositionAndRotation(startPosition, startRotation);
     }
 
     void Update()
     {
-        Debug.Log("Energy: " + getEnergy());
+        //Energy emotes 
+        
     }
 
     IEnumerator SapEnergy() {
-        while(true) {
+        while(energy > 0.05) {
             yield return new WaitForSeconds(0.1f);
             subtractEnergy(0.001f);
             addColorDrain(0.000001f);
         }
+
+        GameObject.Find("Player").GetComponent<CharacterController>().transform.SetPositionAndRotation(startPosition, startRotation);
     }
 
     public float getEnergy() {
