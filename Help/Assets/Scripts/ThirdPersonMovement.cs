@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+    [SerializeField] private StatusEffects status;
     [SerializeField] private float speed = 6.0f;
     [SerializeField] private float rotateSpeed = 3.0f;
     CharacterController controller;
@@ -22,8 +23,8 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 movement = Vector3.zero;
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        movement += transform.forward * v * speed * Time.deltaTime;
-        movement += transform.right * h * speed * Time.deltaTime;
+        movement += transform.forward * v * speed * status.getEnergy() * Time.deltaTime;
+        movement += transform.right * h * speed * status.getEnergy() * Time.deltaTime;
         movement += Physics.gravity;
         controller.Move(movement);
     }

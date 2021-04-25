@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MouseInteraction : MonoBehaviour
 {
-    public Renderer rend;
+    private Renderer rend;
+    [SerializeField] private StatusEffects status;
 
     void Start(){
+        status = GameObject.Find("Player").GetComponent<StatusEffects>();
         rend = GetComponent<Renderer>();
     }
 
@@ -21,5 +23,4 @@ public class MouseInteraction : MonoBehaviour
     void OnMouseUp() {
         Debug.Log("The " + rend.name + " was clicked");
     }
-
 }

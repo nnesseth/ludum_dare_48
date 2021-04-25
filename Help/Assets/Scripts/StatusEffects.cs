@@ -5,6 +5,7 @@ using UnityEngine;
 public class StatusEffects : MonoBehaviour
 {
     [SerializeField] private float energy = 1.0f;
+    [SerializeField] private float colorDrain = 0f;
 
     void Start()
     {
@@ -18,8 +19,9 @@ public class StatusEffects : MonoBehaviour
 
     IEnumerator SapEnergy() {
         while(true) {
-            yield return new WaitForSeconds(1.0f);
-            subtractEnergy(0.01f);
+            yield return new WaitForSeconds(0.1f);
+            subtractEnergy(0.001f);
+            addColorDrain(0.000001f);
         }
     }
 
@@ -36,6 +38,18 @@ public class StatusEffects : MonoBehaviour
     }
 
     public void subtractEnergy(float value) {
-        energy -= value;
+        if(energy > 0.01f){
+            energy -= value;
+        }
+    }
+
+    public void addColorDrain(float value) {
+        if(colorDrain < 0.99f){
+            colorDrain += value;
+        }
+    }
+
+    public float getColorDrain() {
+        return colorDrain;
     }
 }
