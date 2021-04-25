@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.UI;
+using UnityEditor.UI;
 
 public class StatusEffects : MonoBehaviour
 {
@@ -30,6 +32,7 @@ public class StatusEffects : MonoBehaviour
 
     void Start()
     {
+        GameObject.Find("Bed Blanket - Made").SetActive(false);
         StartCoroutine("SapEnergy");
         player.transform.SetPositionAndRotation(startPosition, startRotation);
         text = GameObject.Find("Text Box").GetComponent<Text>();
@@ -101,6 +104,7 @@ public class StatusEffects : MonoBehaviour
         }
         text.text = "Fuck it.";
         GameObject.Find("Player").GetComponent<CharacterController>().transform.SetPositionAndRotation(startPosition, startRotation);
+        setEnergy(1f);
     }
 
     public float getEnergy() {
