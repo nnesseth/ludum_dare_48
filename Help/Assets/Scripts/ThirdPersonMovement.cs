@@ -6,12 +6,17 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private float speed = 6.0f;
     [SerializeField] private float rotateSpeed = 3.0f;
     CharacterController controller;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
     }
     void Update()
     {
+        // Get current non-vertical velocity of player
+        Vector3 playerVelocity = controller.velocity;
+        playerVelocity = new Vector3(controller.velocity.x, 0, controller.velocity.y);
+
         // Rotate around the y axis
         transform.Rotate(0, Input.GetAxis("Mouse X") * rotateSpeed, 0);
 
@@ -23,5 +28,10 @@ public class ThirdPersonMovement : MonoBehaviour
         movement += transform.right * h * speed * status.getEnergy() * Time.deltaTime;
         movement += Physics.gravity;
         controller.Move(movement);
+    }
+
+    public float getSpeed()
+    {
+        return speed;
     }
 }
