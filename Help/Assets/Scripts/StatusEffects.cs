@@ -34,13 +34,13 @@ public class StatusEffects : MonoBehaviour
         StartCoroutine("SapEnergy");
         player.transform.SetPositionAndRotation(startPosition, startRotation);
         text = GameObject.Find("Text Box").GetComponent<Text>();
-        sadThoughts = new string[9] {"*yawn* ... Tired.",
-                                     "Gah.. I just want to go back to bed..",
-                                     "Most people go through their whole lives, without ever really feeling that close with anyone.",
-                                     "Time doesn’t heal all wounds. That’s bullshit. it comes from people who have nothing comforting or original to say.",
-                                     "Maybe I've always been broken and dark inside.",
+        sadThoughts = new string[9] {"*yawn* ... I'm tired.",
+                                     "I really don't feel like doing much today.",
+                                     "Just a little nap.",
+                                     "I wonder if everyone is like this.",
+                                     "Eh...",
                                      "I wish they'd stop asking me if I'm okay.",
-                                     "There's something comforting about giving in to this feeling.",
+                                     "YOLO.",
                                      "I bet the toilet would curl up next to me.",
                                      "The linoleum floor never looked so soft."};
 }
@@ -95,14 +95,18 @@ public class StatusEffects : MonoBehaviour
     }
 
     IEnumerator SapEnergy() {
-        while(energy > 0.05) {
+        while(true) {
             yield return new WaitForSeconds(0.1f);
             subtractEnergy(0.001f);
             addColorDrain(0.000001f);
+            if(getEnergy() < 0f) {
+                text.text = "I handle this shit tomorrow.";
+                yield return new WaitForSeconds(2);
+                GameObject.Find("Player").GetComponent<CharacterController>().transform.SetPositionAndRotation(startPosition, startRotation);
+                setColorDrain(0f);
+            }
         }
-        text.text = "Fuck it.";
-        GameObject.Find("Player").GetComponent<CharacterController>().transform.SetPositionAndRotation(startPosition, startRotation);
-        SceneManager.LoadScene(1);
+        
     }
 
     public float getEnergy() {
@@ -118,7 +122,7 @@ public class StatusEffects : MonoBehaviour
     }
 
     public void subtractEnergy(float value) {
-        if(energy > 0.01f){
+        if(energy > 0f){
             energy -= value;
         }
     }
