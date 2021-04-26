@@ -9,4 +9,8 @@ public class PlayButtonBehavior : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    void Start(){
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicPlayer>().PlayMusic();
+    }
 }

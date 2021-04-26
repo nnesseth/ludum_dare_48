@@ -162,6 +162,7 @@ public class InteractionRay : MonoBehaviour
     IEnumerator FinishGame(){
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(2);
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicPlayer>().StopMusic();
     }
 
     private void OnDrawGizmos()
