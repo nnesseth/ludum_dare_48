@@ -3359,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2077500677817419011, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
+      propertyPath: m_TagString
+      value: Interactable Object
+      objectReference: {fileID: 0}
     - target: {fileID: 2575178586913865177, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3411,11 +3415,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed
       objectReference: {fileID: 0}
+    - target: {fileID: 4186436769356693932, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
+      propertyPath: m_TagString
+      value: Interactable Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713883678099543373, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
+      propertyPath: m_TagString
+      value: Interactable Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699559581423419433, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699559581423419433, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8572104103888242905, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8939665176784905465, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
+      propertyPath: m_TagString
+      value: Interactable Object
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7699559581423419433, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f0f0791c8d26ff42a4e56c6e1974367, type: 3}
 --- !u!4 &6102389955350271290 stripped
 Transform:

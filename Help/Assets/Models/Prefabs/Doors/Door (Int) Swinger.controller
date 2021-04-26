@@ -10,8 +10,7 @@ AnimatorState:
   m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 3210273657854612860}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -59,8 +58,7 @@ AnimatorState:
   m_Name: Closed
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 8429634426648186190}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -152,8 +150,7 @@ AnimatorState:
   m_Name: Door(Interior)Opening
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -2437650720508660852}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -254,8 +251,7 @@ AnimatorState:
   m_Name: Door(Interior)Closing
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -8070475208649500350}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
