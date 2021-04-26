@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionRay : MonoBehaviour
-{
+{/*
     // Reference to the camera
     Camera cam;
 
@@ -18,17 +18,24 @@ public class InteractionRay : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Shoot a ray from the mouse position
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);    // Shoot a ray from the mouse position
+            RaycastHit hit;                                         // Store info on what was hit
 
-            // Store info on what was hit
-            RaycastHit hit;
-
-            // Cast out the ray: shoot 'ray', store info output in 'hit' 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))                      // Check if the ray physically hits
             {
+
+                // Debugger
                 Debug.Log("Ray cast hit the object: " + hit.collider.name + "\nHit point location: " + hit.point);
+
+                // Check if we hit an interactable
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                if (interactable != null)
+                {
+                    Debug.Log("It worked!!!!!!!!!!");
+                }
+
             }
         }
     }
-}
+*/}
