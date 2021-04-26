@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
-using UnityEditor.UI;
 public class MouseInteraction : MonoBehaviour
 {
     private Renderer rend;

@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
-using UnityEditor.UI;
 using UnityEngine.SceneManagement;
 public class StatusEffects : MonoBehaviour
 {
@@ -26,6 +23,7 @@ public class StatusEffects : MonoBehaviour
     public bool doIhaveKeys = false;
     public bool doIhaveWallet = false;
     public bool amIFed = false;
+    public bool amIClean = false;
 
     Text text;
     string[] sadThoughts;
