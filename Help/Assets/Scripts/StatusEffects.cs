@@ -9,15 +9,15 @@ public class StatusEffects : MonoBehaviour
     [SerializeField] private CharacterController player;
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private Quaternion startRotation;
-    private bool belowNinety = false;
-    private bool belowEighty = false;
-    private bool belowSeventy = false;
-    private bool belowSixty = false;
-    private bool belowFifty = false;
-    private bool belowForty = false;
-    private bool belowThirty = false;
-    private bool belowTwenty = false;
-    private bool belowTen = false;
+    // private bool belowNinety = false;
+    // private bool belowEighty = false;
+    // private bool belowSeventy = false;
+    // private bool belowSixty = false;
+    // private bool belowFifty = false;
+    // private bool belowForty = false;
+    // private bool belowThirty = false;
+    // private bool belowTwenty = false;
+    // private bool belowTen = false;
     public bool isBedMade = false;
     public bool areTeethBrushed = false;
     public bool doIhaveKeys = false;
@@ -31,9 +31,12 @@ public class StatusEffects : MonoBehaviour
     GameObject soapIcon;
     GameObject toothbrushIcon;
     GameObject hamburgerIcon;
-
     Renderer wallet;
     Renderer keys;
+    Renderer pillowUnmade;
+    Renderer sheetsMade;
+    Renderer sheetsUnmade;
+    Renderer pillowMade;
 
     Text text;
     string[] sadThoughts;
@@ -48,7 +51,11 @@ public class StatusEffects : MonoBehaviour
         hamburgerIcon = GameObject.Find("Hamburger Icon");
         wallet = GameObject.Find("Wallet").GetComponentInChildren<Renderer>();
         keys = GameObject.Find("Keys").GetComponentInChildren<Renderer>();
-        
+        sheetsMade = GameObject.Find("Bed Blanket - Made").GetComponent<Renderer>();
+        sheetsUnmade = GameObject.Find("Bed Blanket - Unmade").GetComponent<Renderer>();
+        pillowMade = GameObject.Find("Bed Pillow - Made").GetComponent<Renderer>();
+        pillowUnmade = GameObject.Find("Bed Pillow - Unmade").GetComponent<Renderer>();
+
         StartCoroutine("SapEnergy");
         player.transform.SetPositionAndRotation(startPosition, startRotation);
         text = GameObject.Find("Text Box").GetComponent<Text>();
@@ -87,10 +94,10 @@ public class StatusEffects : MonoBehaviour
         //     belowSixty = true;
         // }
         
-        if(getEnergy() < 0.5f && belowFifty == false) {
-            text.text = sadThoughts[Random.Range(0,9)];
-            belowFifty = true;
-        }
+        // if(getEnergy() < 0.5f && belowFifty == false) {
+        //     text.text = sadThoughts[Random.Range(0,9)];
+        //     belowFifty = true;
+        // }
         
         // if(getEnergy() < 0.4f && belowForty == false) {
         //     text.text = sadThoughts[Random.Range(0,9)];
@@ -139,22 +146,21 @@ public class StatusEffects : MonoBehaviour
         amIFed = false;
         amIClean = false;
         
-        keysIcon = GameObject.Find("Keys Icon");
+        
         keysIcon.SetActive(false);
-        walletIcon = GameObject.Find("Wallet Icon");
         walletIcon.SetActive(false);
-        bedIcon = GameObject.Find("Bed Icon");
         bedIcon.SetActive(false);
-        soapIcon = GameObject.Find("Soap Icon");
         soapIcon.SetActive(false);
-        toothbrushIcon = GameObject.Find("Toothbrush Icon");
         toothbrushIcon.SetActive(false);
-        hamburgerIcon = GameObject.Find("Hamburger Icon");
         hamburgerIcon.SetActive(false);
 
         wallet.enabled = true;
         keys.enabled = true;
 
+        pillowUnmade.enabled = true;
+        sheetsMade.enabled = false;
+        sheetsUnmade.enabled = true;
+        pillowMade.enabled = false;
     }
 
     public float getEnergy() {
@@ -170,15 +176,11 @@ public class StatusEffects : MonoBehaviour
     }
 
     public void subtractEnergy(float value) {
-        if(energy > 0f){
             energy -= value;
-        }
     }
 
     public void addColorDrain(float value) {
-        if(colorDrain < 0.99f){
             colorDrain += value;
-        }
     }
 
     public float getColorDrain() {
