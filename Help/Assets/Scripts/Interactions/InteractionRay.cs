@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class InteractionRay : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class InteractionRay : MonoBehaviour
     GameObject hamburgerIcon;
     GameObject toothbrushIcon;
     GameObject bedIcon;
+    Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +68,7 @@ public class InteractionRay : MonoBehaviour
         toothbrushIcon.SetActive(false);
         hamburgerIcon = GameObject.Find("Hamburger Icon");
         hamburgerIcon.SetActive(false);
+        text = GameObject.Find("Text Box").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -112,33 +115,39 @@ public class InteractionRay : MonoBehaviour
                         pillowUnmade.enabled = false;
                         status.isBedMade = true;
                         bedIcon.SetActive(true);
+                        text.text = "Well, that's something.. time to brush my teeth.";
                         Debug.Log("I'm Bed Made.");
                     } else if(hit.collider.name == "Keys")
                     {
                         keys.enabled = false;
                         status.doIhaveKeys = true;
                         keysIcon.SetActive(true);
+                        text.text = "Yes, found them. Time to face the music.";
                         Debug.Log("I'm Keys.");
                     } else if(hit.collider.name == "Wallet")
                     {
                         wallet.enabled = false;
                         status.doIhaveWallet = true;
                         walletIcon.SetActive(true);
+                        text.text = "Wallet, check. Can't remember where I put my keys though...";
                         Debug.Log("I'm Wallet.");
                     } else if(hit.collider.name == "Sink")
                     {
                         status.areTeethBrushed = true;
                         toothbrushIcon.SetActive(true);
+                        text.text = "I do feel a bit better. Maybe a shower isn't so hard.";
                         Debug.Log("I'm Tooth Brushed");
                     } else if(hit.collider.name == "Fridge")
                     {
                         status.amIFed = true;
                         hamburgerIcon.SetActive(true);
+                        text.text = "Shit, I might actually make it outside today. Wallet and keys.";
                         Debug.Log("I'm Fed.");
                     } else if(hit.collider.name == "Shower")
                     {
                         status.amIClean = true;
                         soapIcon.SetActive(true);
+                        text.text = "Hard to feel crappy when you're clean. Easy when you're hungry though.";
                         Debug.Log("I'm Clean.");
                     } else
                     {
