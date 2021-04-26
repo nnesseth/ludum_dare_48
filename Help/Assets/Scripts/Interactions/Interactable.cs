@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
-{/*
+{
     public float playerRadius = 5f;
     public Transform player;
     public Transform interactionTransform;
-    bool hasInteracted = false;
+    //bool hasInteracted = false;
 
     // The virtual method allows all interactable items to derive from the same method
     // BUT the type of interaction can be different for each item: ex. complete a task, open a door, etc.
@@ -17,13 +17,14 @@ public class Interactable : MonoBehaviour
         //Debug.Log("Interacted with " + transform.name);
     }
 
+
+    /*
     private void Start()
     {
         player = GameObject.Find("Player").transform;
     }
 
-    // Update is called once per frame
-/*    void Update()
+    void Update()
     {
         float distance = Vector3.Distance(player.position, transform.position);
         
@@ -39,17 +40,24 @@ public class Interactable : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
-    public void Interacted ()
+    public void Interacted (GameObject lastHit, Vector3 collision)
     {
         //
+        //Debug.Log("Interacted with " + objectHit.name);
+
     }
-    void OnDrawGizmosSelected()
+
+
+    /*void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(player.position, playerRadius);
-    }
-*/}
+    }*/
+
+
+
+}
 
 
