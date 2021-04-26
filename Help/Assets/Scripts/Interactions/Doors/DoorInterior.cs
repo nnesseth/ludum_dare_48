@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorExterior : MonoBehaviour
+public class DoorInterior : MonoBehaviour
 {
     private Animator doorSwing;
     private bool doorOpen = false;
@@ -18,15 +18,14 @@ public class DoorExterior : MonoBehaviour
     {
         if (!doorOpen)
         {
-            doorSwing.Play("Door(Exterior)Opening", 0, 0f);
+            doorSwing.Play("Door(Interior)Opening", 0, 0f);
             doorOpen = true;
 
         }
         else
         {
-            doorSwing.Play("Door(Exterior)Closing", 0, 0f);
+            doorSwing.Play("Door(Interior)Closing", 0, 0f);
             doorOpen = false;
         }
     }
 }
-

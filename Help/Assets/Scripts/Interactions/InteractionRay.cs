@@ -18,8 +18,8 @@ public class InteractionRay : MonoBehaviour
     public Vector3 collision = Vector3.zero;
 
 
-    private DoorExterior hitDoor;
-
+    private DoorExterior hitExtDoor;
+    private DoorInterior hitIntDoor;
 
 
     // Start is called before the first frame update
@@ -35,34 +35,42 @@ public class InteractionRay : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);    // Shoot a ray from the mouse position
-            RaycastHit hit;                                         // Store info on what was hit
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);           // Shoot a ray from the mouse position
+            RaycastHit hit;                                                // Store info on what was hit
 
             if (Physics.Raycast(ray, out hit, rayLength))                  // Check if the ray physically hits
             {
 
-                // Debugger
-                Debug.Log("Ray cast hit the object: " + hit.collider.name + "\nHit point location: " + hit.point);
-
-
-
-
+                // Ray hitting debugger
+                //Debug.Log("Ray cast hit the object: " + hit.collider.name + "\nHit point location: " + hit.point);
 
 
                 // If hit collider name is an object with an interactable script on it, then call that script to do things
                 if (hit.collider.CompareTag(interactableTag))
                 {
-                    lastHit = hit.transform.gameObject;
-
-                    //collision = hit.point;
+                    lastHit = hit.transform.gameObject; // can be useful somehow if you learn to use Interactable.cs
+                    //collision = hit.point;            // this and next line may also be useful
                     //interactableObject.Interacted(lastHit, collision);
 
                     // Debugger
-                    Debug.Log("Hit INTERACTABLE tagged object: " + hit.collider.name);
+                    Debug.Log("Hit an INTERACTABLE tagged object: " + hit.collider.name);
+
+                    if (hit.collider.name == "Door (Ext) Swinger")
+                    {
+                        hitExtDoor = hit.collider.gameObject.GetComponent<DoorExterior>();
+                        hitExtDoor.DoorAnimation();
+                    } else if (hit.collider.name == "Door (Int) Swinger")
+                    {
+                        hitIntDoor = hit.collider.gameObject.GetComponent<DoorInterior>();
+                        hitIntDoor.DoorAnimation();
+                    } else
+                    {
+                        Debug.Log("*** Missing interaction script for an interactable tagged object! ***");
+                    }
 
 
-                    hitDoor = hit.collider.gameObject.GetComponent<DoorExterior>();
-                    hitDoor.DoorAnimation();
+
+
                 }
 
             }
