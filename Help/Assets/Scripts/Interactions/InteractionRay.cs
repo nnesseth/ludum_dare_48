@@ -7,6 +7,7 @@ public class InteractionRay : MonoBehaviour
     // Reference to the camera
     Camera cam;
     Interactable interactableObject;
+    StatusEffects status;
 
     private const string interactableTag = "Interactable Object";
     
@@ -21,11 +22,24 @@ public class InteractionRay : MonoBehaviour
     private DoorExterior hitExtDoor;
     private DoorInterior hitIntDoor;
 
+    private Renderer sheetsUnmade;
+    private Renderer pillowUnmade;
+    private Renderer sheetsMade;
+    private Renderer pillowMade;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        status = GameObject.Find("Player").GetComponent<StatusEffects>();
+        sheetsMade = GameObject.Find("Bed Blanket - Made").GetComponent<Renderer>();
+        sheetsMade.enabled = false;
+        sheetsUnmade = GameObject.Find("Bed Blanket - Unmade").GetComponent<Renderer>();
+        sheetsUnmade.enabled = true;
+        pillowMade = GameObject.Find("Bed Pillow - Made").GetComponent<Renderer>();
+        pillowMade.enabled = false;
+        pillowUnmade = GameObject.Find("Bed Pillow - Unmade").GetComponent<Renderer>();
+        pillowUnmade.enabled = true;
     }
 
     // Update is called once per frame
@@ -55,7 +69,7 @@ public class InteractionRay : MonoBehaviour
                     // Debugger
                     Debug.Log("Hit an INTERACTABLE tagged object: " + hit.collider.name);
 
-                    if (hit.collider.name == "Door (Ext) Swinger")
+                    if (hit.collider.name == "Door (Ext) Swinger" && status.isBedMade && status.amIFed && status.areTeethBrushed && status.doIhaveWallet && status.doIhaveKeys)
                     {
                         hitExtDoor = hit.collider.gameObject.GetComponent<DoorExterior>();
                         hitExtDoor.DoorAnimation();
@@ -63,6 +77,12 @@ public class InteractionRay : MonoBehaviour
                     {
                         hitIntDoor = hit.collider.gameObject.GetComponent<DoorInterior>();
                         hitIntDoor.DoorAnimation();
+                    } else if(hit.collider.name == "Bed Blanket - Unmade")
+                    {
+                        sheetsMade.enabled = true;
+                        pillowMade.enabled = true;
+                        sheetsUnmade.enabled = false;
+                        pillowUnmade.enabled = false;
                     } else
                     {
                         Debug.Log("*** Missing interaction script for an interactable tagged object! ***");

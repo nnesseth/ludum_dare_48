@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEditor.UI;
-
+using UnityEngine.SceneManagement;
 public class StatusEffects : MonoBehaviour
 {
-    [SerializeField] private float energy = 1.0f;
-    [SerializeField] private float colorDrain = 0f;
+    [SerializeField] private float energy = 0.75f;
+    [SerializeField] private float colorDrain = 0.25f;
     [SerializeField] private CharacterController player;
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private Quaternion startRotation;
@@ -32,7 +32,7 @@ public class StatusEffects : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("Bed Blanket - Made").SetActive(false);
+        
         StartCoroutine("SapEnergy");
         player.transform.SetPositionAndRotation(startPosition, startRotation);
         text = GameObject.Find("Text Box").GetComponent<Text>();
@@ -104,7 +104,7 @@ public class StatusEffects : MonoBehaviour
         }
         text.text = "Fuck it.";
         GameObject.Find("Player").GetComponent<CharacterController>().transform.SetPositionAndRotation(startPosition, startRotation);
-        setEnergy(1f);
+        SceneManager.LoadScene(1);
     }
 
     public float getEnergy() {
@@ -133,5 +133,9 @@ public class StatusEffects : MonoBehaviour
 
     public float getColorDrain() {
         return colorDrain;
+    }
+
+    public void setColorDrain(float value) {
+        colorDrain = value;
     }
 }
