@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+
 public class InteractionRay : MonoBehaviour
 {
     // Reference to the camera
@@ -97,7 +99,7 @@ public class InteractionRay : MonoBehaviour
                     {
                         hitExtDoor = hit.collider.gameObject.GetComponent<DoorExterior>();
                         hitExtDoor.DoorAnimation();
-                        SceneManager.LoadScene(2);
+                        StartCoroutine(FinishGame());
                     } else if (hit.collider.name == "Door (Int) Swinger")
                     {
                         hitIntDoor = hit.collider.gameObject.GetComponent<DoorInterior>();
@@ -148,6 +150,10 @@ public class InteractionRay : MonoBehaviour
         }
     }
 
+    IEnumerator FinishGame(){
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(2);
+    }
 
     private void OnDrawGizmos()
     {
