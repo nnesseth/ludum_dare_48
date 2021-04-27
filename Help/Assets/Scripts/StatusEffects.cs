@@ -126,7 +126,7 @@ public class StatusEffects : MonoBehaviour
             subtractEnergy(0.0025f);
             addColorDrain(0.0025f);
             if(getEnergy() < 0f) {
-                text.text = "I'll handle this shit tomorrow.";
+                text.text = "I can't do this... Not today...";
                 yield return new WaitForSeconds(2);
                 GameObject.Find("Player").GetComponent<CharacterController>().transform.SetPositionAndRotation(startPosition, startRotation);
                 text.text = "";
@@ -145,7 +145,7 @@ public class StatusEffects : MonoBehaviour
         doIhaveWallet = false;
         amIFed = false;
         amIClean = false;
-        
+
         
         keysIcon.SetActive(false);
         walletIcon.SetActive(false);
